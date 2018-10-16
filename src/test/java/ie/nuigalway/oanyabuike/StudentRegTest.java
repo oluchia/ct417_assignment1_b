@@ -1,5 +1,6 @@
 package ie.nuigalway.oanyabuike;
 
+import org.joda.time.DateTime;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -10,17 +11,10 @@ import static org.junit.Assert.assertTrue;
  */
 public class StudentRegTest
 {
-    /**
-     * Rigorous Test :-)
-     */
-
-    private Student s;
-
     @Test
     public void testGetUsername() {
-        s = new Student();
-        s.setAge(20);
-        s.setName("Oluchi");
+        Student s;
+        s = new Student("Oluchi", 20, new DateTime(), 900990, null, null, null);
 
         assertEquals(s.getUsername(), "Oluchi20");
     }
