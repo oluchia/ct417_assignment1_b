@@ -29,9 +29,6 @@ public class Student {
         this.userName = userName;
         this.courses = cp;
         this.modules = modules;
-
-        courses = new ArrayList<CourseProgramme>();
-        this.modules = new ArrayList<Module>();
     }
 
     public String getName() {

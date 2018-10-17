@@ -22,9 +22,6 @@ public class CourseProgramme
         this.moduleList = moduleList;
         this.studentList = studentList;
 
-        this.moduleList = new ArrayList<>();
-        this.studentList = new ArrayList<>();
-
     }
 
     public String getCourseName() {

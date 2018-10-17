@@ -20,9 +20,6 @@ public class Module
         this.id = id;
         this.studentList = sList;
         this.coursesList = cList;
-
-        studentList = new ArrayList<Student>();
-        coursesList = new ArrayList<CourseProgramme>();
     }
 
     public String getModuleName() {
