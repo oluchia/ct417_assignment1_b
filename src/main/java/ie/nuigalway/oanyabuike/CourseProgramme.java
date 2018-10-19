@@ -63,29 +63,21 @@ public class CourseProgramme
         this.endDate = endDate;
     }
 
-    protected boolean hasModule(Module m) {
-        m.hasCourse(this);
-        return moduleList.add(m);
+    /*
+    helper methods
+     */
+    protected void addModule(Module m) {
+        m.addCourse(this);
+        moduleList.add(m);
     }
 
-    protected boolean hasStudent(Student s) {
-
-        s.hasCourse(this);
+    protected void addStudent(Student s) {
+        s.addCourse(this);
         if (getModuleList().size() > 0) {
-            for (Module m :moduleList) {
-                m.hasStudent(s);
+            for (Module m : moduleList) {
+                m.addStudent(s);
             }
         }
-        return studentList.add(s);
-    }
-
-    @Override
-    public String toString() {
-        return "CourseProgramme " + "\t" +
-                "courseName='" + courseName + '\'' +
-                ", moduleList=" + moduleList +
-                ", studentList=" + studentList +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate ;
+        studentList.add(s);
     }
 }

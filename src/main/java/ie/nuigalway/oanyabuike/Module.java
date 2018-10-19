@@ -53,21 +53,15 @@ public class Module
         return coursesList;
     }
 
-    protected boolean hasCourse(CourseProgramme cp) {
-        return coursesList.add(cp);
+    /*
+    helper methods
+     */
+    protected void addCourse(CourseProgramme cp) {
+        coursesList.add(cp);
     }
 
-    protected boolean hasStudent(Student s) {
-        s.hasModule(this);
-        return studentList.add(s);
-    }
-
-    @Override
-    public String toString() {
-        return "Module " + "\t" +
-                "moduleName='" + moduleName + '\'' +
-                ", id=" + id +
-                ", studentList=" + studentList +
-                ", coursesList=" + coursesList ;
+    protected void addStudent(Student s) {
+        s.addModule(this);
+        studentList.add(s);
     }
 }

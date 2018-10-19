@@ -96,23 +96,14 @@ public class Student {
         return name + "" + String.valueOf(age);
     }
 
-    protected boolean hasModule(Module m) {
-        return modules.add(m);
+    /*
+    helper methods
+     */
+    protected void addModule(Module m) {
+        modules.add(m);
     }
 
-    protected boolean hasCourse(CourseProgramme cp) {
-        return courses.add(cp);
-    }
-
-    @Override
-    public String toString() {
-        return "Student " + "\t" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", dateOfBirth=" + dateOfBirth +
-                ", id=" + id +
-                ", userName='" + userName + '\'' +
-                ", courses=" + courses +
-                ", modules=" + modules ;
+    protected void addCourse(CourseProgramme cp) {
+        courses.add(cp);
     }
 }
