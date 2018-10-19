@@ -3,6 +3,7 @@ package ie.nuigalway.oanyabuike;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,11 +18,13 @@ public class CourseProgramme
     private DateTime startDate;
     private DateTime endDate;
 
-    public CourseProgramme(String courseName, List<Module> moduleList, List<Student> studentList) {
+    public CourseProgramme(String courseName, DateTime startDate, DateTime endDate) {
         this.courseName = courseName;
-        this.moduleList = moduleList;
-        this.studentList = studentList;
+        this.startDate = startDate;
+        this.endDate = endDate;
 
+        moduleList = new ArrayList<>();
+        studentList = new ArrayList<>();
     }
 
     public String getCourseName() {
@@ -39,19 +42,9 @@ public class CourseProgramme
         return moduleList;
     }
 
-    public void setModuleList(List<Module> moduleList) {
-
-        this.moduleList = moduleList;
-    }
-
     public List<Student> getStudentList() {
 
         return studentList;
-    }
-
-    public void setStudentList(List<Student> studentList) {
-
-        this.studentList = studentList;
     }
 
     public DateTime getStartDate() {
@@ -70,14 +63,29 @@ public class CourseProgramme
         this.endDate = endDate;
     }
 
+    protected boolean hasModule(Module m) {
+        m.hasCourse(this);
+        return moduleList.add(m);
+    }
+
+    protected boolean hasStudent(Student s) {
+
+        s.hasCourse(this);
+        if (getModuleList().size() > 0) {
+            for (Module m :moduleList) {
+                m.hasStudent(s);
+            }
+        }
+        return studentList.add(s);
+    }
+
     @Override
     public String toString() {
-        return "CourseProgramme{" +
+        return "CourseProgramme " + "\t" +
                 "courseName='" + courseName + '\'' +
                 ", moduleList=" + moduleList +
                 ", studentList=" + studentList +
                 ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                '}';
+                ", endDate=" + endDate ;
     }
 }

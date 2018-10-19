@@ -13,8 +13,7 @@ public class StudentRegTest
 {
     @Test
     public void testGetUsername() {
-        Student s;
-        s = new Student("Oluchi", 20, new DateTime(), 900990, null, null, null);
+        Student s = new Student("Oluchi", 20, new DateTime(), "12345000");
 
         assertEquals(s.getUsername(), "Oluchi20");
     }

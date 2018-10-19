@@ -15,11 +15,12 @@ public class Module
     private List<CourseProgramme> coursesList;
 
 
-    public Module(String modName, int id, List<Student> sList, List<CourseProgramme> cList) {
+    public Module(String modName, int id) {
         this.moduleName = modName;
         this.id = id;
-        this.studentList = sList;
-        this.coursesList = cList;
+
+        studentList = new ArrayList<>();
+        coursesList = new ArrayList<>();
     }
 
     public String getModuleName() {
@@ -47,28 +48,26 @@ public class Module
         return studentList;
     }
 
-    public void setStudentList(List<Student> studentList) {
-
-        this.studentList = studentList;
-    }
-
     public List<CourseProgramme> getCoursesList() {
 
         return coursesList;
     }
 
-    public void setCoursesList(List<CourseProgramme> coursesList) {
+    protected boolean hasCourse(CourseProgramme cp) {
+        return coursesList.add(cp);
+    }
 
-        this.coursesList = coursesList;
+    protected boolean hasStudent(Student s) {
+        s.hasModule(this);
+        return studentList.add(s);
     }
 
     @Override
     public String toString() {
-        return "Module {" +
+        return "Module " + "\t" +
                 "moduleName='" + moduleName + '\'' +
                 ", id=" + id +
                 ", studentList=" + studentList +
-                ", coursesList=" + coursesList +
-                '}';
+                ", coursesList=" + coursesList ;
     }
 }

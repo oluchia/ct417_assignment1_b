@@ -15,20 +15,20 @@ public class Student {
     private String name;
     private int age;
     private DateTime dateOfBirth;
-    private int id;
+    private String id;
     private String userName;
     private List<CourseProgramme> courses;
     private List<Module> modules;
 
 
-    public Student(String name, int age, DateTime dob, int id, String userName, List<CourseProgramme> cp, List<Module> modules) {
+    public Student(String name, int age, DateTime dob, String id) {
         this.name = name;
         this.age = age;
         this.dateOfBirth = dob;
         this.id = id;
-        this.userName = userName;
-        this.courses = cp;
-        this.modules = modules;
+
+        courses = new ArrayList<>();
+        modules = new ArrayList<>();
     }
 
     public String getName() {
@@ -61,12 +61,12 @@ public class Student {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getId() {
+    public String getId() {
 
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
 
         this.id = id;
     }
@@ -86,19 +86,9 @@ public class Student {
         return courses;
     }
 
-    public void setCourses(List<CourseProgramme> courses) {
-
-        this.courses = courses;
-    }
-
     public List<Module> getModules() {
 
         return modules;
-    }
-
-    public void setModules(List<Module> modules) {
-
-        this.modules = modules;
     }
 
     protected String getUsername() {
@@ -106,16 +96,23 @@ public class Student {
         return name + "" + String.valueOf(age);
     }
 
+    protected boolean hasModule(Module m) {
+        return modules.add(m);
+    }
+
+    protected boolean hasCourse(CourseProgramme cp) {
+        return courses.add(cp);
+    }
+
     @Override
     public String toString() {
-        return "Student {" +
+        return "Student " + "\t" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", dateOfBirth=" + dateOfBirth +
                 ", id=" + id +
                 ", userName='" + userName + '\'' +
                 ", courses=" + courses +
-                ", modules=" + modules +
-                '}';
+                ", modules=" + modules ;
     }
 }
